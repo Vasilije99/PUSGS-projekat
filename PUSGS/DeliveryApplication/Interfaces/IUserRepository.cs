@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeliveryApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +10,6 @@ namespace DeliveryApplication.Interfaces
     {
         void Register(string name, string username, string email, string surename, DateTime dateOfBirth, string address, string userType, string image, string password);
         Task<bool> UserAlreadyExists(string username);
+        Task<User> Login(string email, string password);
     }
 }

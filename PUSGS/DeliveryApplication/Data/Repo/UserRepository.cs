@@ -19,6 +19,32 @@ namespace DeliveryApplication.Data.Repo
             this.dc = dc;
         }
 
+        public async Task<User> Login(string email, string password)
+        {
+            var user = await dc.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+            if (user == null || user.PasswordKey == null)
+                return null;
+            if (!MatchPassword(password, user.Password, user.PasswordKey))
+                return null;
+            return user;
+        }
+
+        private bool MatchPassword(string password, byte[] passwordFromDb, byte[] passwordKey)
+        {
+            using(var hmac = new HMACSHA512(passwordKey))
+            {
+                var passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+                for(int i = 0; i < passwordHash.Length; i++)
+                {
+                    if (passwordHash[i] != passwordFromDb[i])
+                        return false;
+                }
+
+                return true;
+            }
+        }
+
         public void Register(string name, string username, string email, string surename, DateTime dateOfBirth, string address, string userType, string image, string password)
         {
             byte[] passwordHash, passwordKey;
