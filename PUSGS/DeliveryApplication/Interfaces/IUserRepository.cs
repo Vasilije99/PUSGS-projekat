@@ -7,6 +7,7 @@ namespace DeliveryApplication.Interfaces
 {
     public interface IUserRepository
     {
-        void Register(string name);
+        void Register(string name, string username, string email, string surename, DateTime dateOfBirth, string address, string userType, string image, string password);
+        Task<bool> UserAlreadyExists(string username);
     }
 }
