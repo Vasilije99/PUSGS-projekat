@@ -1,0 +1,87 @@
+<!--New Order-->
+<div class="new-order" *ngIf="currentOrder === undefined">
+    <form [formGroup]="newOrderForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" formControlName="address" placeholder="Enter address">
+
+            <span *ngIf="!address.valid && address.touched" class="error-block"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Comment</label>
+            <input type="text" class="form-control" formControlName="comment" placeholder="Enter comment">
+
+            <span *ngIf="!comment.valid && comment.touched" class="error-block"></span>
+        </div>
+
+        <div class="all-products">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Ingredients</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" style="text-align: center;">Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orderProducts">
+                        <td>{{item.productName}}</td>
+                        <td>{{item.ingredients}}</td>
+                        <td><b>{{item.price}} $</b></td>
+                        <td style="text-align: center;">
+                            <span class="count-set" (click)="onOrderChange(item.productName, '-')">-</span>
+                            <span>{{item.count}}</span>
+                            <span class="count-set" (click)="onOrderChange(item.productName, '+')">+</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="display: flex; justify-content: space-around;">
+            <div style="font-size: 20px;">Price (<i>delivery cost 2$</i>): <b style="margin-left: 20px;">{{orderPrice + 2}} $</b></div>
+            <button type="submit" class="btn btn-warning">Pay with cash</button>
+            <i>- or -</i>
+            <div id="paypal-checkout-btn">
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<!--Current Order-->
+<div class="current-order" *ngIf="currentOrder !== undefined" style="margin-top: 20px;">
+    <!-- <h3>Your order state: <i>{{currentOrder.orderState === 0 ? 'WAITING FOR DELIVERER' : (currentOrder.orderState === 1 ? 'ACTIVE' : 'FINISHED')}}</i></h3> -->
+
+    <h3>Thanks for your order</h3>
+
+    <div *ngIf="currentOrder.orderState === 0" style="text-align:center">
+        <img src="../../../assets/images/pending-order.jpg" alt="waiting-for-deliverer">
+        <h6><i>waiting for deliverer . . .</i></h6>
+    </div>
+
+    <div *ngIf="currentOrder.orderState === 1" style="text-align:center">
+        <img src="../../../assets/images/active-order.png" alt="waiting-for-deliverer">
+        <h6><i>deliverer is on the way . . .</i></h6>
+    </div>
+
+    <h5 class="summary_span">Order summary</h5>
+
+    <div class="summary">
+        <div>
+            Price:
+            <b>{{currentOrder.price}} $</b>
+        </div>
+        <div>
+            Comment:
+            <b>{{currentOrder.comment}}</b>
+        </div>
+        <div>
+            Delivery address:
+            <b>{{currentOrder.deliveryAddress}}</b>
+        </div>
+    </div>
+</div>

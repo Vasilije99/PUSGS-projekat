@@ -1,0 +1,24 @@
+.register_header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register-forms {
+    display: flex;
+}
+
+.social-network-login {
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.social-network-login h4 {
+    font-weight: 100;
+}
+
+.social-network-login .buttons {
+    display: flex;
+    justify-content: space-around;
+}

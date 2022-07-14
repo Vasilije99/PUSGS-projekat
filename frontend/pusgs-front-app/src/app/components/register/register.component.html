@@ -1,0 +1,104 @@
+<h1 class="register_header">Create your account</h1>
+
+<div class="social-network-login">
+    <h4>Sign In with Facebook or Google</h4>
+    <div class="buttons">
+        <div class="g-signin2" onSuccess="onSignIn"></div>
+        <button class="btn btn-primary" (click)="loginWithFb()">Sign in with Facebook</button>
+    </div>
+</div>
+
+<div class="register-forms">
+    <form class="row g-3" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group col-md-6">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" formControlName="userName" placeholder="Enter username">
+            <span *ngIf="!userName.valid && (userName.touched || userSubmitted)" class="error-block">
+          Please provide username
+        </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+            <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">
+          <span *ngIf="email.hasError('required')">
+              Please provide email id
+          </span>
+            <span *ngIf="email.hasError('email')">
+            Please provide valid email id
+          </span>
+            </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            <span *ngIf="!password.valid && (password.touched || userSubmitted)" class="error-block">
+          <span *ngIf="password.hasError('required')">
+            Please provide password
+          </span>
+            <span *ngIf="password.hasError('minlength')">
+            Password should not be lesser than 8 character
+          </span>
+            </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+            <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userSubmitted)" class="error-block">
+          <span *ngIf="confirmPassword.hasError('required')">
+            Please confirm password
+          </span>
+            </span>
+            <span *ngIf="registrationForm.hasError('notmatched') && confirmPassword.valid" class="error-block">
+          Password not matched
+        </span>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
+            <span *ngIf="!name.valid && (name.touched || userSubmitted)" class="error-block">
+          Please provide name
+        </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Lastname</label>
+            <input type="text" class="form-control" formControlName="lastname" placeholder="Enter lastname">
+            <span *ngIf="!lastname.valid && (lastname.touched || userSubmitted)" class="error-block">
+          Please provide lastname
+        </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" formControlName="dateOfBirth">
+            <span *ngIf="!dateOfBirth.valid && (dateOfBirth.touched || userSubmitted)" class="error-block">
+          Please select date of birth
+        </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" formControlName="address" placeholder="Enter Address">
+            <span *ngIf="!address.valid && (address.touched || userSubmitted)" class="error-block">
+          Please provide address
+        </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Type of User</label>
+            <select class="form-control" formControlName="userType">
+          <option>Admin</option>
+          <option>Deliverer</option>
+          <option>Consumer</option>
+        </select>
+            <span *ngIf="!userType.valid && (userType.touched || userSubmitted)" class="error-block">
+          Please choose an user type
+        </span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="form-label">Choose an User Image</label>
+            <input type="file" class="form-control-file" formControlName="userImage">
+            <span *ngIf="!userImage.valid && (userImage.touched || userSubmitted)" class="error-block">
+          Please choose an user image
+        </span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

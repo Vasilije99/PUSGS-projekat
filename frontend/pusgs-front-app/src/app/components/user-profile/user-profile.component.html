@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-xl-3">
+        <!-- Profile picture card-->
+        <div class="card mb-4 mb-xl-0">
+            <div class="card-header">Profile Picture</div>
+            <div class="card-body text-center">
+                <img class="img-account-profile rounded-circle mb-2" src='{{"../../../assets/images/" + getImageName(userData.image)}}' alt="noImage">
+                <label class="btn btn-primary btn-file" style="display: block; margin-top: 10px; width: fit-content; margin: auto;">
+                  Upload New Image <input type="file" style="display: none;" [(ngModel)]="userData.image">
+              </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <!-- Account details card-->
+        <div class="card mb-4">
+            <div class="card-header">Account Details</div>
+            <div class="card-body">
+                <form #Form="ngForm">
+                    <div class="mb-3">
+                        <label class="small mb-1">Email</label>
+                        <input class="form-control" type="email" #email="ngModel" name="email" [(ngModel)]="userData.email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1">Username (how your name will appear to other users on the site)</label>
+                        <input class="form-control" type="text" #username="ngModel" name="username" [(ngModel)]="userData.username">
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="small mb-1">Name</label>
+                            <input class="form-control" type="text" #name="ngModel" name="name" [(ngModel)]="userData.name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small mb-1">Surname</label>
+                            <input class="form-control" type="text" #surname="ngModel" name="surname" [(ngModel)]="userData.surname">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" (click)="editProfile()">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card mb-4 mb-xl-0">
+            <div class="card-header">Password Change</div>
+
+            <div class="card-body">
+                <form #Form="ngForm">
+                    <div class="mb-3">
+                        <label class="small mb-1">Current Password</label>
+                        <input class="form-control" type="password" name="currentPassword" [(ngModel)]="changePassword.currentPassword" #currentPassword="ngModel">
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1">New Password</label>
+                        <input class="form-control" type="password" name="newPassword" [(ngModel)]="changePassword.newPassword" #newPassword="ngModel">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" (click)="onPasswordSubmit()">Change Password</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

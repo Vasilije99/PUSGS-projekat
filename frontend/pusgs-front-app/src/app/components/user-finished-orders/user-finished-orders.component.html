@@ -1,0 +1,20 @@
+<div class="finished-orders" *ngIf="finishedOrders !== null">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">DeliveryAddress</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Price</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of finishedOrders">
+                <td>{{item?.deliveryAddress}}</td>
+                <td>{{item?.comment}}</td>
+                <td>{{item?.price}}</td>
+                <td>{{item?.product}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

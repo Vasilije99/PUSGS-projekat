@@ -1,0 +1,47 @@
+.new-order {
+    margin-top: 20px;
+}
+
+span {
+    font-size: 24px;
+}
+
+.count-set {
+    cursor: pointer;
+    color: red;
+    margin: 0px 10px;
+}
+
+.price {
+    font-size: 24px;
+}
+
+.current-order {
+    margin: auto;
+    border: 1px solid blue;
+    border-radius: 10px;
+    width: 50%;
+    padding: 10px;
+}
+
+.current-order h3 {
+    color: blue;
+    font-weight: 200;
+}
+
+.current-order img {
+    display: block;
+    margin: auto;
+}
+
+.current-order .summary_span {
+    color: blue;
+    border-bottom: 1px dashed blue;
+    padding: 5px;
+}
+
+.current-order .summary div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}

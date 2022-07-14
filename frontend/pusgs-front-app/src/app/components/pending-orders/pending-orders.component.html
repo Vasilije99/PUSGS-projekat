@@ -1,0 +1,56 @@
+<nav class="nav nav-tabs">
+    <button class="nav-btn btn btn-primary" (click)="currentOrderClick()">Current Delivery</button>
+</nav>
+<div class="new-delivery">
+    <div class="pending-orders">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">DeliveryAddress</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Details</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of pendingOrders">
+                    <td>{{item?.deliveryAddress}}</td>
+                    <td>{{item?.comment}}</td>
+                    <td><b>{{item?.price}} $</b></td>
+                    <td>{{item?.product}}</td>
+                    <td><button *ngIf="timerActivate !== true" class="btn btn-primary" (click)="takeDelivery(item.id, this.userId)">Take Delivery</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="current-delivery" *ngIf="currentOrderDisplay">
+        <h4>Your delivery:</h4>
+
+        <img src="../../../assets/images/current-delivery.png" alt="current-delivery">
+
+        <div *ngIf="timerActivate === true" class="timer">
+            <h4>Time to finish delivery:</h4>
+            <countdown [config]="{ leftTime: 30 }" (event)="handleEvent($event, currentOrder.id)"></countdown>
+        </div>
+
+        <h5 class="summary_span">Order summary</h5>
+
+        <div class="summary">
+            <div>
+                Price:
+                <b>{{currentOrder.price}} $</b>
+            </div>
+            <div>
+                Comment:
+                <b>{{currentOrder.comment}}</b>
+            </div>
+            <div>
+                Delivery address:
+                <b>{{currentOrder.deliveryAddress}}</b>
+            </div>
+        </div>
+    </div>
+</div>
+<app-map style="margin: 20px;" [takeDelivery]="takeDelivery" [userId]="userId"></app-map>

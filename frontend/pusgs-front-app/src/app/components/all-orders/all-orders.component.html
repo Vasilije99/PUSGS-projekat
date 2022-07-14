@@ -1,0 +1,22 @@
+<div>
+    <h1>All orders</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Delivery Address</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Price</th>
+                <th scope="col">Delivery State</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of allOrders">
+                <td>{{item.deliveryAddress}}</td>
+                <td>{{item.comment}}</td>
+                <td><b>{{item.price}} $</b></td>
+                <td>{{item.orderState === 0 ? 'PENDING' : (item.orderState === 1 ? 'ACTIVE' : 'FINISHED')}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

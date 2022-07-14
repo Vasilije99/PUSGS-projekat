@@ -1,0 +1,27 @@
+<div *ngIf="userData !== undefined">
+    <nav class="nav nav-tabs">
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('myProfile')">My Profile</button>
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('new/current del')" *ngIf="userData.userType === 'Consumer'">New/Current delivery</button>
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('del history')" *ngIf="userData.userType === 'Consumer'">Delivery history</button>
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('verifications')" *ngIf="userData.userType === 'Admin'">Verifications</button>
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('new del')" *ngIf="userData.userType === 'Deliverer'">New Delivery</button>
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('my del')" *ngIf="userData.userType === 'Deliverer'">My Delivery</button>
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('all del')" *ngIf="userData.userType === 'Admin'">All Deliveries</button>
+        <button class="nav-btn btn btn-primary" (click)="onNavChange('add prod')" *ngIf="userData.userType === 'Admin'">Add Product</button>
+    </nav>
+</div>
+
+<!--Admin tabs-->
+<app-verification *ngIf="userData.userType === 'Deliverer' && userData.isVerified !== 2" [userId]="userId" [verificationUser]="userData"></app-verification>
+<app-user-profile [userId]="userId" [userData]="userData" *ngIf="tab === 'myProfile' && (userData.userType !== 'Deliverer' || userData.isVerified === 2)" class="container-xl px-4 mt-4"></app-user-profile>
+<app-pending-verification-users *ngIf="tab === 'verifications'"></app-pending-verification-users>
+<app-all-orders *ngIf="tab === 'all del'"></app-all-orders>
+<app-add-product *ngIf="tab === 'add prod'"></app-add-product>
+
+<!--Consumer tabs-->
+<app-create-order *ngIf="tab === 'new/current del'" [userId]="userId"></app-create-order>
+<app-user-finished-orders *ngIf="tab === 'del history'" [userId]="userId"></app-user-finished-orders>
+
+<!--Deliverer tabs-->
+<app-pending-orders *ngIf="tab === 'new del'" [userId]="userId"></app-pending-orders>
+<app-deliverer-orders *ngIf="tab === 'my del'" [userId]="userId"></app-deliverer-orders>

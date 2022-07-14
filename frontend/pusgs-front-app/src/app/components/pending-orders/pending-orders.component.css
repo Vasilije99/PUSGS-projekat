@@ -1,0 +1,61 @@
+.new-delivery {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.pending-orders {
+    border: 1px solid blue;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    margin: 0px 10px;
+}
+
+.nav-btn {
+    margin: 20px 5px 5px 5px;
+}
+
+.current-delivery {
+    margin: auto;
+    width: 50%;
+    border: 1px solid blue;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.current-delivery h4 {
+    text-align: center;
+    font-weight: 200;
+    margin-top: 10px;
+}
+
+.current-delivery img {
+    margin: auto;
+    display: block;
+}
+
+.summary_span {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed blue;
+}
+
+.summary div {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timer {
+    border: 1px solid blue;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    margin: 0px 10px;
+}
+
+.mapa {
+    width: 350px;
+    height: 400px;
+}

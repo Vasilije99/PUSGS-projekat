@@ -1,0 +1,11 @@
+<div class="verification" *ngIf="verificationUser.isVerified !== 1">
+    <h1 class="verification_header">Welcome!</h1>
+    <img src="../../../../assets/images/handshake.png" alt="handshake.png" class="verification_img">
+    <p>We're excited to have you get started. First, you need to confirm your account. Just press the button below.</p>
+    <button class="verification_btn" (click)="sendVerificationRequest()">Verify your account!</button>
+</div>
+
+<div class="verification_in_progress" *ngIf="verificationUser.isVerified === 1">
+    <h2 class="verification_header">Your verification is in progress . . .</h2>
+    <div class="spinner-border"></div>
+</div>

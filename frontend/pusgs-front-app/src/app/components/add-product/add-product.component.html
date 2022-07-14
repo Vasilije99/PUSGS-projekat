@@ -1,0 +1,32 @@
+<h1>Add new product</h1>
+
+<form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Enter name of product" />
+
+        <span class="error-block" *ngIf="!name.valid && name.touched">
+          Please enter product name
+        </span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Price</label>
+        <input type="text" class="form-control" formControlName="price" placeholder="Enter price of product" />
+
+        <span class="error-block" *ngIf="!price.valid && price.touched">
+          Please enter valid product price
+        </span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Ingredients</label>
+        <input type="text" class="form-control" formControlName="ingredients" placeholder="Enter ingredients of product" />
+
+        <span class="error-block" *ngIf="!ingredients.valid && ingredients.touched">
+          Please enter product ingredients
+        </span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
